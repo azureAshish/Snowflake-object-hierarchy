@@ -1,9 +1,11 @@
 from pyvis.network import Network
-import os, json
+import os,json
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 import streamlit.components.v1 as components
+
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
 indent = '  '
 
@@ -70,11 +72,11 @@ def getJson(df):
 def makeCollapsibleTree(df):
 
     # create HTML file from template customized with our JSON
-    with open(f"animated/templates/collapsible-tree.html", "r") as file:
+    with open(dir_path + "/animated/templates/collapsible-tree.html", "r") as file:
         content = file.read()
         
     root = getJson(df)
-    filename = f'animated/collapsible-tree.html'
+    filename = dir_path + '/animated/collapsible-tree.html'
     with open(filename, "w") as file:
         file.write(content.replace('"{{data}}"', json.dumps(root, indent=4)))
     return os.path.abspath(filename)
@@ -102,14 +104,14 @@ def makeNetworkGraph(df):
     for node in data.nodes:
         node["value"] = len(map[node["id"]])
 
-    filename = "animated/network-graph.html"
+    filename = dir_path + "/animated/network-graph.html"
     data.show(filename)
     return os.path.abspath(filename)
 
 st.set_page_config(layout="wide")
 st.title("Snowflake Object Hierarchy")
 
-df = pd.read_csv("data/databaseobject.csv", header=0).convert_dtypes()
+df = pd.read_csv((dir_path + '/data/databaseobject.csv'), header=0).convert_dtypes()
 
 labels, parents = df[df.columns[0]], df[df.columns[1]]
 
