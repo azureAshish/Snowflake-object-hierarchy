@@ -1,0 +1,26 @@
+Object_Type,Object_Type_Name
+Organization
+Account Level Objects,Organization
+Integration,Account Level Objects
+Resource Monitor,Account Level Objects
+Share,Account Level Objects
+Warehouse,Account Level Objects
+Database,Account Level Objects
+Role,Account Level Objects
+User,Account Level Objects
+Grants,Account Level Objects
+Database-Level Objects,Database
+Grant Objects,Grants
+Schema,Database-Level Objects
+External Table,Schema
+File Format,Schema
+Masking Policy,Schema
+Pipe,Schema
+Stage,Schema
+Stream,Schema
+Table,Schema
+Task,Schema
+View,Schema
+on Account-level,Grant Objects
+on Database-Level,Grant Objects
+on Schema-level,Grant Objects
